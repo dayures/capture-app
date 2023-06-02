@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: capture-app
+  annotations:
+    github.com/project-slug: dhis2/capture-app
+spec:
+  type: web-app
+  lifecycle: prod
