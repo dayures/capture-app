@@ -57,7 +57,14 @@ Cypress.Commands.add('loginByApi', ({ username, password, baseUrl }) => {
             },
         });
     }
-
+    
     // Set base url for the app platform
     window.localStorage.setItem('DHIS2_BASE_URL', baseUrl);
 });
+
+Cypress.Commands.add('validateUserIsLoggedIn', ({ baseUrl, username }) => {
+    cy.request(`${baseUrl}/api/me`).then((response) => {
+        expect(response.status).to.eq(200)
+        expect(response.body.username).to.eq(username)
+    })
+})
